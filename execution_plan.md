@@ -3,18 +3,18 @@
 This file breaks down each milestone into sequential steps to track progress.
 
 ## M1: FastAPI Scaffold, Excel I/O & Unit Tests
-- [ ] Initialize Git repo and push to GitHub
-- [ ] Add `.gitignore`, Python 3.10+ environment setup
-- [ ] Create `requirements.txt` with FastAPI, Pydantic, pandas, openpyxl, scikit-learn
-- [ ] Scaffold FastAPI app (`app/main.py`, router files)
-- [ ] Define domain folders: `domains/upload`, `domains/search`, `domains/export`
-- [ ] Implement `ExcelFile` I/O service and write PyTest unit tests
-- [ ] Implement `SimilarityEngine` stub (vectorizer + NN skeleton) and unit tests
-- [ ] Ensure `pytest` passes with coverage report
+- [x] Initialize Git repo and push to GitHub
+- [x] Add `.gitignore`, Python 3.10+ environment setup
+- [x] Create `requirements.txt` with FastAPI, Pydantic, pandas, openpyxl, scikit-learn
+- [x] Scaffold FastAPI app (`app/main.py`, router files)
+- [x] Define domain folders: `domains/upload`, `domains/search`, `domains/export`
+- [x] Implement `ExcelFile` I/O service and write PyTest unit tests
+- [x] Implement `SimilarityEngine` stub (vectorizer + NN skeleton) and unit tests
+- [x] Ensure `pytest` passes with coverage report
 
 ## M2: API Endpoints & Frontend MVP
-- [ ] Define FastAPI endpoints: `/upload`, `/process`, `/download`
-- [ ] Write integration tests using FastAPI `TestClient`
+- [x] Define FastAPI endpoints: `/upload`, `/process`, `/download`
+- [x] Write integration tests using FastAPI `TestClient`
 - [ ] Scaffold React app (`create-react-app` with TypeScript)
 - [ ] Install Tailwind CSS and configure styles
 - [ ] Build `UploadForm` component and Axios service for file upload
