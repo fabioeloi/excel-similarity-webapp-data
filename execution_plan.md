@@ -1,0 +1,45 @@
+# Execution Plan: Milestone Roadmap
+
+This file breaks down each milestone into sequential steps to track progress.
+
+## M1: FastAPI Scaffold, Excel I/O & Unit Tests
+- [ ] Initialize Git repo and push to GitHub
+- [ ] Add `.gitignore`, Python 3.10+ environment setup
+- [ ] Create `requirements.txt` with FastAPI, Pydantic, pandas, openpyxl, scikit-learn
+- [ ] Scaffold FastAPI app (`app/main.py`, router files)
+- [ ] Define domain folders: `domains/upload`, `domains/search`, `domains/export`
+- [ ] Implement `ExcelFile` I/O service and write PyTest unit tests
+- [ ] Implement `SimilarityEngine` stub (vectorizer + NN skeleton) and unit tests
+- [ ] Ensure `pytest` passes with coverage report
+
+## M2: API Endpoints & Frontend MVP
+- [ ] Define FastAPI endpoints: `/upload`, `/process`, `/download`
+- [ ] Write integration tests using FastAPI `TestClient`
+- [ ] Scaffold React app (`create-react-app` with TypeScript)
+- [ ] Install Tailwind CSS and configure styles
+- [ ] Build `UploadForm` component and Axios service for file upload
+- [ ] Implement file processing flow: upload → call `/process` → receive download link
+- [ ] Build `ResultsTable` to preview matched items and scores
+- [ ] Add Jest + React Testing Library unit tests for components and service
+
+## M3: UX Polish, Error Handling & Edge Cases
+- [ ] Add client-side validation: file type, max size
+- [ ] Display loading spinner and progress indicators
+- [ ] Handle empty or malformed rows and report errors
+- [ ] Show low-similarity warnings and fallback messaging
+- [ ] Write end-to-end tests (Cypress or Playwright)
+
+## M4: CI/CD Pipeline & Deployment
+- [ ] Configure GitHub Actions workflow (`.github/workflows/ci.yml`)
+  - lint: `flake8`, `black --check`, `eslint`
+  - test-backend: `pytest --cov`
+  - test-frontend: `npm ci && npm test -- --coverage`
+  - build: React `npm run build`
+- [ ] Add CI badges to `README.md`
+- [ ] Set up deployment (Heroku or AWS)
+- [ ] Add deploy job in GitHub Actions (trigger on `main`)
+- [ ] Verify production build and update docs
+
+---
+
+**Usage:** Check off items as you complete them. Add any sub-tasks directly under each step if needed.
