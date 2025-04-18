@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://fabioeloi.github.io/excel-similarity-webapp-data",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -21,9 +22,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "test": "react-scripts test",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
@@ -47,6 +49,8 @@
     ]
   },
   "devDependencies": {
+    "@types/cypress": "^0.1.6",
+    "cross-env": "^7.0.3",
     "cypress": "^12.17.1",
     "tailwindcss": "^4.1.4"
   }
