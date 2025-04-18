@@ -15,16 +15,16 @@ This file breaks down each milestone into sequential steps to track progress.
 ## M2: API Endpoints & Frontend MVP
 - [x] Define FastAPI endpoints: `/upload`, `/process`, `/download`
 - [x] Write integration tests using FastAPI `TestClient`
-- [ ] Scaffold React app (`create-react-app` with TypeScript)
-- [ ] Install Tailwind CSS and configure styles
-- [ ] Build `UploadForm` component and Axios service for file upload
-- [ ] Implement file processing flow: upload → call `/process` → receive download link
-- [ ] Build `ResultsTable` to preview matched items and scores
+- [x] Scaffold React app (`create-react-app` with TypeScript)
+- [x] Install Tailwind CSS and configure styles
+- [x] Build `UploadForm` component and Axios service for file upload
+- [x] Implement file processing flow: upload → call `/process` → receive download link
+- [x] Build `ResultsTable` to preview matched items and scores
 - [ ] Add Jest + React Testing Library unit tests for components and service
 
 ## M3: UX Polish, Error Handling & Edge Cases
-- [ ] Add client-side validation: file type, max size
-- [ ] Display loading spinner and progress indicators
+- [x] Add client-side validation: file type, max size
+- [x] Display loading spinner and progress indicators
 - [ ] Handle empty or malformed rows and report errors
 - [ ] Show low-similarity warnings and fallback messaging
 - [ ] Write end-to-end tests (Cypress or Playwright)

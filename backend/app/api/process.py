@@ -23,8 +23,15 @@ async def process_file(request: ProcessRequest):
     df = FileStorage.read(str(file_path))
     if df.shape[1] < 2:
         raise HTTPException(status_code=400, detail="Input file must have at least two columns")
-    searches = df.iloc[:, 0].astype(str).tolist()
-    candidates = df.iloc[:, 1].astype(str).tolist()
+    # Drop rows with empty or whitespace cells in first two columns
+    col0, col1 = df.columns[0], df.columns[1]
+    mask = (~df[col0].astype(str).str.strip().eq('')) & (~df[col1].astype(str).str.strip().eq(''))
+    n_removed = len(df) - int(mask.sum())
+    df_clean = df[mask]
+    if df_clean.empty:
+        raise HTTPException(status_code=400, detail="No valid rows to process after filtering empty entries")
+    searches = df_clean.iloc[:, 0].astype(str).tolist()
+    candidates = df_clean.iloc[:, 1].astype(str).tolist()
     engine = SimilarityEngine()
     engine.fit(candidates)
     results = engine.query(searches)
@@ -32,4 +39,8 @@ async def process_file(request: ProcessRequest):
     output_file_id = f"{request.file_id}_result"
     output_path = RESULT_DIR / f"{output_file_id}.xlsx"
     FileStorage.write(res_df, str(output_path))
-    return {"result_id": output_file_id}
+    # Include warnings for dropped rows
+    warnings = []
+    if n_removed > 0:
+        warnings.append(f"Dropped {n_removed} rows with missing values")
+    return {"result_id": output_file_id, "results": results, "warnings": warnings}
