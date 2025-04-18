@@ -20,14 +20,14 @@ This file breaks down each milestone into sequential steps to track progress.
 - [x] Build `UploadForm` component and Axios service for file upload
 - [x] Implement file processing flow: upload → call `/process` → receive download link
 - [x] Build `ResultsTable` to preview matched items and scores
-- [ ] Add Jest + React Testing Library unit tests for components and service
+- [x] Add Jest + React Testing Library unit tests for components and service
 
 ## M3: UX Polish, Error Handling & Edge Cases
 - [x] Add client-side validation: file type, max size
 - [x] Display loading spinner and progress indicators
-- [ ] Handle empty or malformed rows and report errors
-- [ ] Show low-similarity warnings and fallback messaging
-- [ ] Write end-to-end tests (Cypress or Playwright)
+- [x] Handle empty or malformed rows and report errors
+- [x] Show low-similarity warnings and fallback messaging
+- [x] Write end-to-end tests (Cypress)
 
 ## M4: CI/CD Pipeline & Deployment
 - [ ] Configure GitHub Actions workflow (`.github/workflows/ci.yml`)
