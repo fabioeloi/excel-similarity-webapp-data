@@ -8,10 +8,7 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "types": [
-      "cypress",
-      "node"
-    ],
+    "types": ["react", "react-dom", "jest", "node"],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
