@@ -30,15 +30,16 @@ This file breaks down each milestone into sequential steps to track progress.
 - [x] Write end-to-end tests (Cypress)
 
 ## M4: CI/CD Pipeline & Deployment
-- [ ] Configure GitHub Actions workflow (`.github/workflows/ci.yml`)
+- [x] Configure GitHub Actions workflow (`.github/workflows/ci.yml`)
   - lint: `flake8`, `black --check`, `eslint`
   - test-backend: `pytest --cov`
   - test-frontend: `npm ci && npm test -- --coverage`
   - build: React `npm run build`
 - [ ] Add CI badges to `README.md`
-- [ ] Set up deployment (Heroku or AWS)
-- [ ] Add deploy job in GitHub Actions (trigger on `main`)
-- [ ] Verify production build and update docs
+- [ ] Set up deployment (Render.com)
+- [x] Add deploy job in GitHub Actions (trigger on `main`)
+- [x] Verify production build and update docs
+- [x] Document Render.com deployment steps in `README_deploy_render.md`
 
 ---
 
