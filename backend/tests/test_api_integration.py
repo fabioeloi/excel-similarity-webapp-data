@@ -6,6 +6,7 @@ from app.main import app
 
 client = TestClient(app)
 
+
 @pytest.fixture(autouse=True)
 def cleanup_dirs(tmp_path, monkeypatch):
     # Redirect uploads and results to temp dir
@@ -16,13 +17,20 @@ def cleanup_dirs(tmp_path, monkeypatch):
     (tmp_path / "results").mkdir()
     yield
 
+
 def test_full_flow():
     # Prepare sample excel
     df = pd.DataFrame({"A": ["apple", "banana"], "B": ["apple", "banana"]})
     buf = BytesIO()
     df.to_excel(buf, index=False, engine="openpyxl")
     buf.seek(0)
-    files = {"file": ("test.xlsx", buf, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")}
+    files = {
+        "file": (
+            "test.xlsx",
+            buf,
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        )
+    }
 
     # Upload
     resp = client.post("/upload/", files=files)
@@ -37,9 +45,16 @@ def test_full_flow():
     # Download
     resp3 = client.get(f"/download/{result_id}")
     assert resp3.status_code == 200
-    assert resp3.headers["content-type"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    assert (
+        resp3.headers["content-type"]
+        == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
 
     # Verify content
     buf2 = BytesIO(resp3.content)
     df_out = pd.read_excel(buf2)
-    assert "search" in df_out.columns and "match" in df_out.columns and "score" in df_out.columns
+    assert (
+        "search" in df_out.columns
+        and "match" in df_out.columns
+        and "score" in df_out.columns
+    )

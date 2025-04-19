@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 class FileStorage:
     @staticmethod
     def read(path: str) -> pd.DataFrame:

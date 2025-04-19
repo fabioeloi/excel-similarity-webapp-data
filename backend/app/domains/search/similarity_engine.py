@@ -2,10 +2,11 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neighbors import NearestNeighbors
 from typing import List, Dict, Any
 
+
 class SimilarityEngine:
     def __init__(self):
         self.vectorizer = TfidfVectorizer()
-        self.nn = NearestNeighbors(metric='cosine')
+        self.nn = NearestNeighbors(metric="cosine")
         self.candidates: List[str] = []
 
     def fit(self, candidates: List[str]) -> None:
@@ -22,9 +23,7 @@ class SimilarityEngine:
         for dist_arr, idx_arr, search_text in zip(distances, indices, searches):
             idx = idx_arr[0]
             score = 1 - dist_arr[0]
-            results.append({
-                'search': search_text,
-                'match': self.candidates[idx],
-                'score': score
-            })
+            results.append(
+                {"search": search_text, "match": self.candidates[idx], "score": score}
+            )
         return results

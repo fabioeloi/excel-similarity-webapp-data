@@ -7,6 +7,7 @@ router = APIRouter(prefix="/upload", tags=["upload"])
 UPLOAD_DIR = Path("uploads")
 UPLOAD_DIR.mkdir(exist_ok=True)
 
+
 @router.post("/")
 async def upload_file(file: UploadFile = File(...)):
     """Save uploaded Excel file and return a unique file ID."""

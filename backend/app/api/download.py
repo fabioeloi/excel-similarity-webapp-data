@@ -6,6 +6,7 @@ router = APIRouter(prefix="/download", tags=["download"])
 
 RESULT_DIR = Path("results")
 
+
 @router.get("/{result_id}")
 async def download_file(result_id: str):
     """Serve the processed Excel file by result ID."""
@@ -15,5 +16,5 @@ async def download_file(result_id: str):
     return FileResponse(
         path=str(file_path),
         media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        filename=file_path.name
+        filename=file_path.name,
     )

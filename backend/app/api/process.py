@@ -12,8 +12,10 @@ RESULT_DIR = Path("results")
 UPLOAD_DIR.mkdir(exist_ok=True)
 RESULT_DIR.mkdir(exist_ok=True)
 
+
 class ProcessRequest(BaseModel):
     file_id: str
+
 
 @router.post("/")
 async def process_file(request: ProcessRequest):
@@ -22,14 +24,21 @@ async def process_file(request: ProcessRequest):
         raise HTTPException(status_code=404, detail="File not found")
     df = FileStorage.read(str(file_path))
     if df.shape[1] < 2:
-        raise HTTPException(status_code=400, detail="Input file must have at least two columns")
+        raise HTTPException(
+            status_code=400, detail="Input file must have at least two columns"
+        )
     # Drop rows with empty or whitespace cells in first two columns
     col0, col1 = df.columns[0], df.columns[1]
-    mask = (~df[col0].astype(str).str.strip().eq('')) & (~df[col1].astype(str).str.strip().eq(''))
+    mask = (~df[col0].astype(str).str.strip().eq("")) & (
+        ~df[col1].astype(str).str.strip().eq("")
+    )
     n_removed = len(df) - int(mask.sum())
     df_clean = df[mask]
     if df_clean.empty:
-        raise HTTPException(status_code=400, detail="No valid rows to process after filtering empty entries")
+        raise HTTPException(
+            status_code=400,
+            detail="No valid rows to process after filtering empty entries",
+        )
     searches = df_clean.iloc[:, 0].astype(str).tolist()
     candidates = df_clean.iloc[:, 1].astype(str).tolist()
     engine = SimilarityEngine()
